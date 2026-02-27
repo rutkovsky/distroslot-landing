@@ -8,7 +8,7 @@ import { FadeIn } from "./ui/AnimatedSection";
 const faqs = [
   {
     q: "Как подключить Ozon API?",
-    a: "В личном кабинете Ozon перейдите в Настройки → API-ключи → Создать ключ. Скопируйте Client ID и API Key, вставьте их в Klastr. Подключение занимает 5 минут.",
+    a: "В личном кабинете Ozon перейдите в Настройки \u2192 API-ключи \u2192 Создать ключ. Скопируйте Client ID и API Key, вставьте их в Klastr. Подключение занимает 5 минут.",
   },
   {
     q: "Сколько времени занимает первый расчёт?",
@@ -16,11 +16,11 @@ const faqs = [
   },
   {
     q: "Зачем платить, если можно считать в Excel?",
-    a: "Excel-расчёт на 100 SKU занимает 5 часов. Klastr — 30 минут. За месяц экономите 20+ часов = 10,000 ₽ (при стоимости часа 500 ₽). Подписка Starter: 1,990 ₽. ROI = 5x.",
+    a: "Excel-расчёт на 100 SKU занимает 5 часов. Klastr \u2014 30 минут. За месяц экономите 20+ часов = 10,000 \u20BD (при стоимости часа 500 \u20BD). Подписка Starter: 1,990 \u20BD. ROI = 5x.",
   },
   {
     q: "Вы новый сервис — почему доверять?",
-    a: "7 дней бесплатно без привязки карты. Используем только read-only доступ к Ozon API — мы не можем изменять ваши данные. Серверы в РФ. Попробуйте и оцените результат.",
+    a: "7 дней бесплатно без привязки карты. Используем только read-only доступ к Ozon API \u2014 мы не можем изменять ваши данные. Серверы в РФ. Попробуйте и оцените результат.",
   },
   {
     q: "Поддерживаете ли вы Wildberries?",
@@ -40,7 +40,7 @@ const faqs = [
   },
   {
     q: "Мои данные в безопасности?",
-    a: "Мы используем только read-only доступ к Ozon API — не можем изменять ваши товары или поставки. Данные хранятся на защищённых серверах в РФ и не передаются третьим лицам.",
+    a: "Мы используем только read-only доступ к Ozon API \u2014 не можем изменять ваши товары или поставки. Данные хранятся на защищённых серверах в РФ и не передаются третьим лицам.",
   },
 ];
 
@@ -52,14 +52,14 @@ export default function FAQSection() {
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Частые вопросы</h2>
+            <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">Частые вопросы</h2>
             <p className="text-muted">
               Не нашли ответ?{" "}
               <a
                 href="https://t.me/distroslot_bot"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:underline"
+                className="font-bold text-foreground underline decoration-primary decoration-2 underline-offset-2 hover:text-primary-text hover:bg-primary/20 transition-colors"
               >
                 Напишите нам в Telegram
               </a>
@@ -73,18 +73,22 @@ export default function FAQSection() {
             {faqs.map((faq, idx) => (
               <div
                 key={idx}
-                className="rounded-xl border border-border bg-card transition-all hover:border-primary/20"
+                className={`rounded-xl border-2 border-border bg-card transition-all ${
+                  openIdx === idx
+                    ? "shadow-none translate-y-[2px]"
+                    : "nb-shadow hover:translate-y-[2px] hover:shadow-none"
+                }`}
               >
                 <button
                   className="flex w-full items-center justify-between px-6 py-4 text-left"
                   onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
                 >
-                  <span className="pr-4 text-sm font-medium text-foreground">{faq.q}</span>
+                  <span className="pr-4 text-sm font-bold text-foreground">{faq.q}</span>
                   <motion.div
                     animate={{ rotate: openIdx === idx ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <ChevronDown size={18} className="shrink-0 text-muted" />
+                    <ChevronDown size={18} className="shrink-0 text-foreground" />
                   </motion.div>
                 </button>
                 <AnimatePresence initial={false}>
@@ -96,7 +100,7 @@ export default function FAQSection() {
                       transition={{ duration: 0.25, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="border-t border-border px-6 py-4">
+                      <div className="border-t-2 border-border-light px-6 py-4">
                         <p className="text-sm leading-relaxed text-muted">{faq.a}</p>
                       </div>
                     </motion.div>

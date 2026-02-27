@@ -5,7 +5,7 @@ const TG_BOT_URL = "https://t.me/distroslot_bot";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border py-12">
+    <footer className="border-t-2 border-border py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-4">
           {/* Brand */}
@@ -22,20 +22,20 @@ export default function Footer() {
                 href={TG_BOT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-primary"
+                className="inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-foreground"
               >
                 <Send size={16} />
                 Telegram
               </a>
               <a
                 href="mailto:support@klastr.ru"
-                className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-primary"
+                className="inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-foreground"
               >
                 <Mail size={16} />
                 support@klastr.ru
               </a>
             </div>
-            <div className="flex items-center gap-2 text-xs text-muted/70">
+            <div className="flex items-center gap-2 text-xs text-muted">
               <Shield size={14} />
               <span>Данные на серверах в РФ · Read-only API · ИП Павлов Валерий</span>
             </div>
@@ -43,7 +43,7 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold text-foreground">Продукт</h4>
+            <h4 className="mb-4 text-sm font-bold text-foreground">Продукт</h4>
             <ul className="space-y-2">
               <li>
                 <a href="#features" className="text-sm text-muted transition-colors hover:text-foreground">
@@ -64,7 +64,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold text-foreground">Ресурсы</h4>
+            <h4 className="mb-4 text-sm font-bold text-foreground">Ресурсы</h4>
             <ul className="space-y-2">
               <li>
                 <a
@@ -77,13 +77,13 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <span className="text-sm text-muted/50">Блог — скоро</span>
+                <span className="text-sm text-muted/50">Блог -- скоро</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border pt-6 text-center text-xs text-muted">
+        <div className="mt-12 border-t-2 border-border pt-6 text-center text-xs text-muted">
           &copy; {new Date().getFullYear()} Klastr. Все права защищены.
         </div>
       </div>

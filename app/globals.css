@@ -1,21 +1,23 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Light theme (default) */
-  --color-background: #ffffff;
-  --color-foreground: #0f172a;
-  --color-card: #f8fafc;
-  --color-card-hover: #f1f5f9;
-  --color-border: #e2e8f0;
-  --color-muted: #64748b;
-  --color-primary: #2563eb;
-  --color-primary-hover: #1d4ed8;
-  --color-secondary: #7c3aed;
-  --color-success: #16a34a;
-  --color-danger: #dc2626;
-  --color-warning: #d97706;
-  --color-warning-bg: #fffbeb;
-  --color-warning-border: #fde68a;
+  /* Soft Neo-Brutalism — Light (default) */
+  --color-background: #FFFEF9;
+  --color-foreground: #1a1a1a;
+  --color-card: #ffffff;
+  --color-card-hover: #FFF9E6;
+  --color-border: #1a1a1a;
+  --color-border-light: #e5e5e5;
+  --color-muted: #6b7280;
+  --color-primary: #FCD34D;
+  --color-primary-hover: #FBBF24;
+  --color-primary-text: #1a1a1a;
+  --color-secondary: #A78BFA;
+  --color-success: #34D399;
+  --color-danger: #F87171;
+  --color-warning: #FBBF24;
+  --color-warning-bg: #FEF9C3;
+  --color-warning-border: #1a1a1a;
   --font-sans: var(--font-inter);
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
 }
@@ -24,22 +26,24 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Dark theme */
+/* Dark Neo-Brutalism */
 html.dark {
-  --color-background: #0a0a0f;
-  --color-foreground: #f8fafc;
-  --color-card: #111119;
-  --color-card-hover: #1a1a2e;
-  --color-border: #1e293b;
-  --color-muted: #94a3b8;
-  --color-primary: #3b82f6;
-  --color-primary-hover: #2563eb;
-  --color-secondary: #8b5cf6;
-  --color-success: #22c55e;
-  --color-danger: #ef4444;
-  --color-warning: #f59e0b;
-  --color-warning-bg: #1c1917;
-  --color-warning-border: #78350f;
+  --color-background: #1a1a2e;
+  --color-foreground: #f5f5f5;
+  --color-card: #252540;
+  --color-card-hover: #2d2d4a;
+  --color-border: #f5f5f5;
+  --color-border-light: #3a3a5c;
+  --color-muted: #9ca3af;
+  --color-primary: #FCD34D;
+  --color-primary-hover: #FBBF24;
+  --color-primary-text: #1a1a1a;
+  --color-secondary: #C4B5FD;
+  --color-success: #6EE7B7;
+  --color-danger: #FCA5A5;
+  --color-warning: #FCD34D;
+  --color-warning-bg: #352e1a;
+  --color-warning-border: #f5f5f5;
 }
 
 body {
@@ -47,4 +51,157 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ═══════════════════════════════════
+   Neo-Brutalism Utility Classes
+   ═══════════════════════════════════ */
+
+/* Card */
+.nb-card {
+  border-radius: 1rem;
+  border: 2px solid var(--color-border);
+  background: var(--color-card);
+  padding: 1.5rem;
+  box-shadow: 4px 4px 0px 0px var(--color-border);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.nb-card-hover:hover {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+/* Primary button (yellow) */
+.nb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--color-border);
+  background: var(--color-primary);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary-text);
+  box-shadow: 4px 4px 0px 0px var(--color-border);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nb-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+/* Large primary button */
+.nb-btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  border-radius: 1rem;
+}
+
+/* Outline button */
+.nb-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--color-border);
+  background: var(--color-card);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+  box-shadow: 4px 4px 0px 0px var(--color-border);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nb-btn-outline:hover {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+/* Badge */
+.nb-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 2px solid var(--color-border);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Shadow utility */
+.nb-shadow {
+  box-shadow: 4px 4px 0px 0px var(--color-border);
+}
+
+/* ═══════════════════════════════════
+   Animated Background Keyframes
+   ═══════════════════════════════════ */
+
+@keyframes float-1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, -30px) rotate(120deg); }
+  66% { transform: translate(-20px, 20px) rotate(240deg); }
+}
+
+@keyframes float-2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(-40px, 20px) rotate(-120deg); }
+  66% { transform: translate(25px, -15px) rotate(-240deg); }
+}
+
+@keyframes float-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(15px, -25px) scale(1.1); }
+}
+
+@keyframes float-4 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-20px, -30px) rotate(90deg); }
+  50% { transform: translate(10px, -50px) rotate(180deg); }
+  75% { transform: translate(30px, -20px) rotate(270deg); }
+}
+
+/* ═══════════════════════════════════
+   Range Slider (ROI Calculator)
+   ═══════════════════════════════════ */
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--color-border-light);
+  border: 2px solid var(--color-border);
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 2px solid var(--color-border);
+  cursor: pointer;
+  box-shadow: 2px 2px 0px 0px var(--color-border);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 2px solid var(--color-border);
+  cursor: pointer;
+  box-shadow: 2px 2px 0px 0px var(--color-border);
 }

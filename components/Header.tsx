@@ -18,7 +18,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b-2 border-border bg-background">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Logo />
 
@@ -27,7 +27,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-muted transition-colors hover:text-foreground"
+              className="text-sm font-medium text-muted transition-colors hover:text-foreground"
             >
               {link.label}
             </a>
@@ -40,32 +40,32 @@ export default function Header() {
             href={TG_BOT_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover"
+            className="nb-btn text-sm"
           >
             <Send size={14} />
-            Попробовать бесплатно
+            Попробовать
           </a>
         </div>
 
         <div className="flex items-center gap-3 md:hidden">
           <ThemeToggle />
           <button
-            className="text-muted"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border-2 border-border bg-card text-foreground transition-[transform,box-shadow] nb-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Меню"
           >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-border bg-background px-4 pb-4 md:hidden">
+        <div className="border-t-2 border-border bg-background px-4 pb-4 md:hidden">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="block py-3 text-sm text-muted transition-colors hover:text-foreground"
+              className="block py-3 text-sm font-medium text-muted transition-colors hover:text-foreground"
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
@@ -75,7 +75,7 @@ export default function Header() {
             href={TG_BOT_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover"
+            className="nb-btn mt-2 w-full justify-center text-sm"
             onClick={() => setMobileOpen(false)}
           >
             <Send size={14} />

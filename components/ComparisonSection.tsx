@@ -37,22 +37,27 @@ function CompetitorCard({
 }) {
   return (
     <div
-      className={`rounded-2xl border p-5 ${
-        highlight ? "border-primary bg-primary/5" : "border-border bg-card"
+      className={`nb-card ${
+        highlight ? "border-primary bg-primary/5" : ""
       }`}
     >
       <h4
         className={`mb-4 text-center text-sm font-bold ${
-          highlight ? "text-primary" : "text-foreground"
+          highlight ? "text-primary-text" : "text-foreground"
         }`}
       >
         {name}
+        {highlight && (
+          <span className="nb-badge ml-2 bg-primary text-primary-text text-[10px]">
+            Рекомендуем
+          </span>
+        )}
       </h4>
       <div className="space-y-3">
         {data.map((d) => (
           <div key={d.label} className="flex items-center justify-between gap-2 text-sm">
             <span className="text-muted">{d.label}</span>
-            <span className={`font-medium ${highlight ? "text-primary" : "text-foreground"}`}>
+            <span className={`font-medium ${highlight ? "text-foreground" : "text-foreground"}`}>
               {d.value === true ? (
                 <Check size={16} className="text-success" />
               ) : d.value === false ? (
@@ -74,7 +79,7 @@ export default function ComparisonSection() {
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Почему Klastr</h2>
+            <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">Почему Klastr</h2>
             <p className="mx-auto max-w-2xl text-muted">
               Сравнение с основными инструментами на рынке для селлеров
             </p>
@@ -83,13 +88,13 @@ export default function ComparisonSection() {
 
         {/* Desktop table */}
         <FadeIn>
-          <div className="hidden overflow-x-auto rounded-2xl border border-border md:block">
+          <div className="hidden overflow-x-auto rounded-2xl border-2 border-border bg-card nb-shadow md:block">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-border bg-card">
+                <tr className="border-b-2 border-border bg-card">
                   <th className="px-6 py-4 text-left font-medium text-muted" />
                   <th className="px-6 py-4 text-center">
-                    <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary">
+                    <span className="nb-badge bg-primary text-primary-text">
                       Klastr
                     </span>
                   </th>
@@ -101,12 +106,12 @@ export default function ComparisonSection() {
                 {rows.map((row) => (
                   <tr
                     key={row.label}
-                    className="border-b border-border/50 transition-colors hover:bg-card-hover/30"
+                    className="border-b border-border-light transition-colors hover:bg-card-hover/30"
                   >
                     <td className="px-6 py-3.5 font-medium text-foreground">{row.label}</td>
                     <td
                       className={`px-6 py-3.5 text-center font-medium ${
-                        row.highlight ? "text-primary" : "text-foreground"
+                        row.highlight ? "text-primary-text" : "text-foreground"
                       }`}
                     >
                       <CellValue value={row.klastr} />
@@ -140,19 +145,20 @@ export default function ComparisonSection() {
             />
           </div>
 
+          {/* Bottom stats */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-muted">
             <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-success">30 мин</span>
+              <span className="nb-badge bg-success/10 text-success border-success">30 мин</span>
               <span>до результата</span>
             </div>
             <div className="h-4 w-px bg-border" />
             <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-secondary">0 ₽</span>
+              <span className="nb-badge bg-secondary/10 text-secondary border-secondary">0 ₽</span>
               <span>за онбординг</span>
             </div>
             <div className="h-4 w-px bg-border" />
             <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-primary">Ozon</span>
+              <span className="nb-badge bg-primary/10 text-primary-text border-primary">Ozon</span>
               <span>= глубже</span>
             </div>
           </div>

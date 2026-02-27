@@ -41,7 +41,7 @@ export default function SolutionSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-3xl font-bold sm:text-4xl">
+            <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">
               Как Klastr решает проблему
             </h2>
             <p className="mx-auto max-w-2xl text-muted">
@@ -54,16 +54,16 @@ export default function SolutionSection() {
           <AnimatedContainer className="grid gap-6 sm:grid-cols-2">
             {features.map((feature) => (
               <AnimatedItem key={feature.title}>
-                <div className="h-full rounded-2xl border border-border bg-card p-6 transition-all hover:border-primary/30 hover:bg-card-hover">
+                <div className="nb-card nb-card-hover h-full">
                   <div className="mb-4 flex items-center justify-between">
-                    <div className="inline-flex rounded-xl bg-primary/10 p-3">
+                    <div className="inline-flex rounded-xl border-2 border-border bg-primary/10 p-3">
                       <feature.icon size={22} className="text-primary" />
                     </div>
-                    <span className="rounded-full bg-success/10 px-2.5 py-1 text-[11px] font-medium text-success">
+                    <span className="nb-badge bg-success/10 text-success">
                       {feature.badge}
                     </span>
                   </div>
-                  <h3 className="mb-2 text-base font-semibold text-foreground">
+                  <h3 className="mb-2 text-base font-bold text-foreground">
                     {feature.title}
                   </h3>
                   <p className="text-sm leading-relaxed text-muted">

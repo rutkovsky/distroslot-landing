@@ -69,7 +69,7 @@ function GlobalSavingsCounter() {
             <Info size={14} />
           </button>
           {tooltipOpen && (
-            <div className="absolute bottom-full left-1/2 z-10 mb-2 w-72 -translate-x-1/2 rounded-lg border border-border bg-card p-3 text-left text-xs leading-relaxed text-muted shadow-lg">
+            <div className="absolute bottom-full left-1/2 z-10 mb-2 w-72 -translate-x-1/2 rounded-xl border-2 border-border bg-card p-3 text-left text-xs leading-relaxed text-muted nb-shadow">
               Расчёт: среднее количество пользователей &times; средняя экономия
               10,000 &#8381;/мес &times; месяцев работы. Экономия = сэкономленные
               часы &times; стоимость часа + снижение ошибок логистики.
@@ -77,9 +77,11 @@ function GlobalSavingsCounter() {
           )}
         </div>
       </div>
-      <p className="text-3xl font-bold text-foreground sm:text-4xl">
-        <AnimatedCounter value={total} /> &#8381;
-      </p>
+      <div className="inline-flex items-center gap-2">
+        <p className="text-3xl font-bold text-foreground sm:text-4xl">
+          <AnimatedCounter value={total} /> &#8381;
+        </p>
+      </div>
     </div>
   );
 }
@@ -97,7 +99,7 @@ export default function ROICalculator() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-3xl font-bold sm:text-4xl">
+            <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">
               Сколько вы экономите с Klastr
             </h2>
           </div>
@@ -105,12 +107,12 @@ export default function ROICalculator() {
           <GlobalSavingsCounter />
 
           {/* Calculator card */}
-          <div className="mx-auto max-w-3xl rounded-2xl border border-border bg-card p-6 sm:p-8">
+          <div className="nb-card mx-auto max-w-3xl">
             {/* Inputs grid */}
             <div className="mb-8 grid gap-6 sm:grid-cols-3">
               {/* SKU slider */}
               <div>
-                <label className="mb-2 block text-sm font-medium text-foreground">
+                <label className="mb-2 block text-sm font-bold text-foreground">
                   Количество SKU
                 </label>
                 <input
@@ -120,16 +122,16 @@ export default function ROICalculator() {
                   step={10}
                   value={sku}
                   onChange={(e) => setSku(Number(e.target.value))}
-                  className="h-2 w-full cursor-pointer appearance-none rounded-full bg-border accent-primary"
+                  className="w-full"
                 />
-                <div className="mt-1 text-center text-lg font-semibold text-primary">
+                <div className="mt-2 text-center text-lg font-bold text-primary">
                   {sku}
                 </div>
               </div>
 
               {/* Hours slider */}
               <div>
-                <label className="mb-2 block text-sm font-medium text-foreground">
+                <label className="mb-2 block text-sm font-bold text-foreground">
                   Часов в неделю на расчёт
                 </label>
                 <input
@@ -139,22 +141,22 @@ export default function ROICalculator() {
                   step={1}
                   value={hours}
                   onChange={(e) => setHours(Number(e.target.value))}
-                  className="h-2 w-full cursor-pointer appearance-none rounded-full bg-border accent-primary"
+                  className="w-full"
                 />
-                <div className="mt-1 text-center text-lg font-semibold text-primary">
+                <div className="mt-2 text-center text-lg font-bold text-primary">
                   {hours}
                 </div>
               </div>
 
               {/* Revenue select */}
               <div>
-                <label className="mb-2 block text-sm font-medium text-foreground">
+                <label className="mb-2 block text-sm font-bold text-foreground">
                   Месячный оборот
                 </label>
                 <select
                   value={revenueIndex}
                   onChange={(e) => setRevenueIndex(Number(e.target.value))}
-                  className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-primary focus:outline-none"
+                  className="w-full rounded-xl border-2 border-border bg-card px-3 py-2 text-sm font-medium text-foreground focus:border-primary focus:outline-none"
                 >
                   {revenueOptions.map((opt, i) => (
                     <option key={opt.label} value={i}>
@@ -162,7 +164,7 @@ export default function ROICalculator() {
                     </option>
                   ))}
                 </select>
-                <div className="mt-1 text-center text-lg font-semibold text-primary">
+                <div className="mt-2 text-center text-lg font-bold text-primary">
                   {revenueOptions[revenueIndex].label}
                 </div>
               </div>
@@ -170,14 +172,14 @@ export default function ROICalculator() {
 
             {/* Results */}
             <div className="mb-6 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-xl border border-border bg-background p-5 text-center">
-                <p className="mb-1 text-sm text-muted">Экономия</p>
+              <div className="rounded-xl border-2 border-border bg-primary/10 p-5 text-center">
+                <p className="mb-1 text-sm font-medium text-muted">Экономия</p>
                 <p className="text-2xl font-bold text-success">
                   <AnimatedCounter value={monthlySavings} /> &#8381;/мес
                 </p>
               </div>
-              <div className="rounded-xl border border-border bg-background p-5 text-center">
-                <p className="mb-1 text-sm text-muted">Klastr окупается за</p>
+              <div className="rounded-xl border-2 border-border bg-primary/10 p-5 text-center">
+                <p className="mb-1 text-sm font-medium text-muted">Klastr окупается за</p>
                 <p className="text-2xl font-bold text-primary">
                   <AnimatedCounter value={paybackDays} /> дней
                 </p>
@@ -196,7 +198,7 @@ export default function ROICalculator() {
                 href={TG_BOT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary to-blue-500 px-8 py-3.5 text-sm font-medium text-white shadow-lg shadow-primary/25 transition-all hover:shadow-xl hover:shadow-primary/30"
+                className="nb-btn"
               >
                 Начать экономить
                 <ArrowRight size={16} />

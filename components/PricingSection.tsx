@@ -65,35 +65,39 @@ export default function PricingSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <div className="mb-10 text-center">
-            <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Тарифы</h2>
+            <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">Тарифы</h2>
             <p className="mx-auto max-w-2xl text-muted">
               Прозрачные цены без скрытых платежей. Выберите подходящий план.
             </p>
           </div>
 
-          {/* Period toggle */}
+          {/* Period toggle — neo-brutalism style */}
           <div className="mb-12 flex items-center justify-center gap-3">
-            <span className={`text-sm font-medium ${!annual ? "text-foreground" : "text-muted"}`}>
-              Месяц
-            </span>
-            <button
-              onClick={() => setAnnual(!annual)}
-              className={`relative h-7 w-12 rounded-full transition-colors ${
-                annual ? "bg-primary" : "bg-border"
-              }`}
-            >
-              <div
-                className={`absolute top-0.5 h-6 w-6 rounded-full bg-white shadow transition-transform ${
-                  annual ? "translate-x-5.5" : "translate-x-0.5"
+            <div className="inline-flex overflow-hidden rounded-xl border-2 border-border nb-shadow">
+              <button
+                onClick={() => setAnnual(false)}
+                className={`px-5 py-2 text-sm font-bold transition-colors ${
+                  !annual
+                    ? "bg-primary text-primary-text"
+                    : "bg-card text-muted hover:bg-card-hover"
                 }`}
-              />
-            </button>
-            <span className={`text-sm font-medium ${annual ? "text-foreground" : "text-muted"}`}>
-              Год
-            </span>
+              >
+                Месяц
+              </button>
+              <button
+                onClick={() => setAnnual(true)}
+                className={`border-l-2 border-border px-5 py-2 text-sm font-bold transition-colors ${
+                  annual
+                    ? "bg-primary text-primary-text"
+                    : "bg-card text-muted hover:bg-card-hover"
+                }`}
+              >
+                Год
+              </button>
+            </div>
             {annual && (
-              <span className="rounded-full bg-success/10 px-2.5 py-0.5 text-xs font-medium text-success">
-                −20%
+              <span className="nb-badge bg-success/10 text-success border-success">
+                -20%
               </span>
             )}
           </div>
@@ -108,15 +112,17 @@ export default function PricingSection() {
             return (
               <AnimatedItem key={plan.name}>
                 <div
-                  className={`relative h-full rounded-2xl border p-8 transition-all ${
+                  className={`nb-card relative h-full ${
                     plan.highlight
-                      ? "border-primary bg-card shadow-xl shadow-primary/10 scale-[1.02]"
-                      : "border-border bg-card hover:border-primary/30"
+                      ? "border-primary shadow-[6px_6px_0px_var(--color-primary)] scale-[1.02]"
+                      : ""
                   }`}
                 >
                   {plan.highlight && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-primary to-secondary px-4 py-1 text-xs font-medium text-white">
-                      Лучший выбор
+                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                      <span className="nb-badge bg-primary text-primary-text">
+                        Лучший выбор
+                      </span>
                     </div>
                   )}
 
@@ -131,7 +137,7 @@ export default function PricingSection() {
                   </div>
 
                   {annual && yearlySaving > 0 && (
-                    <p className="mb-4 text-xs text-success">
+                    <p className="mb-4 text-xs font-medium text-success">
                       Экономия {formatPrice(yearlySaving)} ₽/год
                     </p>
                   )}
@@ -150,12 +156,12 @@ export default function PricingSection() {
                       </button>
                     </div>
                     {tooltipOpen && (
-                      <div className="absolute left-0 top-6 z-10 w-64 rounded-lg border border-border bg-card p-3 text-xs text-muted shadow-lg">
-                        Расчёт: экономия ~10,000 ₽/мес (20ч × 500 ₽/ч). Окупаемость = цена ÷
-                        (10,000 ₽ ÷ 30 дней).
+                      <div className="absolute left-0 top-6 z-10 w-64 rounded-xl border-2 border-border bg-card p-3 text-xs text-muted nb-shadow">
+                        Расчёт: экономия ~10,000 ₽/мес (20ч x 500 ₽/ч). Окупаемость = цена /
+                        (10,000 ₽ / 30 дней).
                         <button
                           onClick={() => setTooltipOpen(false)}
-                          className="mt-1 block text-primary hover:underline"
+                          className="mt-1 block font-bold text-primary-text hover:underline"
                         >
                           Закрыть
                         </button>
@@ -176,10 +182,8 @@ export default function PricingSection() {
                     href={TG_BOT_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex w-full items-center justify-center gap-2 rounded-xl py-3 text-center text-sm font-medium transition-all ${
-                      plan.highlight
-                        ? "bg-gradient-to-r from-primary to-blue-500 text-white shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
-                        : "border border-border bg-card-hover text-foreground hover:border-primary/50"
+                    className={`flex w-full items-center justify-center gap-2 text-sm ${
+                      plan.highlight ? "nb-btn" : "nb-btn-outline"
                     }`}
                   >
                     <Send size={16} />

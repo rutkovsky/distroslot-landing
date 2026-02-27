@@ -54,7 +54,7 @@ export default function PainSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Знакомо?</h2>
+            <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">Знакомо?</h2>
             <p className="mx-auto max-w-2xl text-muted">
               Каждую неделю селлеры на Ozon теряют время и деньги на ручном расчёте поставок.
               А с НДС 22% — каждый процент маржи на счету.
@@ -65,8 +65,8 @@ export default function PainSection() {
         <AnimatedContainer className="mb-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {pains.map((pain) => (
             <AnimatedItem key={pain.stat}>
-              <div className="group h-full rounded-2xl border border-border bg-card p-6 transition-all hover:border-danger/30 hover:bg-card-hover">
-                <div className="mb-4 inline-flex rounded-xl bg-danger/10 p-3">
+              <div className="nb-card nb-card-hover h-full">
+                <div className="mb-4 inline-flex rounded-xl border-2 border-danger bg-danger/10 p-3">
                   <pain.icon size={24} className="text-danger" />
                 </div>
                 <div className="mb-2 text-3xl font-bold text-danger">{pain.stat}</div>
@@ -78,13 +78,15 @@ export default function PainSection() {
         </AnimatedContainer>
 
         <FadeIn>
-          <div className="mx-auto mb-16 max-w-2xl rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
-            <h3 className="mb-4 text-lg font-semibold text-foreground">Klastr для вас, если:</h3>
+          <div className="nb-card mx-auto mb-16 max-w-2xl !bg-primary/10">
+            <h3 className="mb-4 text-lg font-bold text-foreground">Klastr для вас, если:</h3>
             <div className="grid gap-3 sm:grid-cols-2">
               {targetChecks.map((check) => (
                 <div key={check} className="flex items-start gap-3">
-                  <Check size={18} className="mt-0.5 shrink-0 text-primary" />
-                  <span className="text-sm text-foreground">{check}</span>
+                  <div className="mt-0.5 shrink-0 flex h-5 w-5 items-center justify-center rounded-md border-2 border-border bg-primary">
+                    <Check size={12} className="text-primary-text" />
+                  </div>
+                  <span className="text-sm font-medium text-foreground">{check}</span>
                 </div>
               ))}
             </div>
@@ -93,12 +95,12 @@ export default function PainSection() {
 
         <FadeIn>
           <div className="mx-auto max-w-3xl">
-            <h3 className="mb-6 text-center text-lg font-semibold text-foreground">Устали от?</h3>
+            <h3 className="mb-6 text-center text-lg font-bold text-foreground">Устали от?</h3>
             <div className="grid gap-4 sm:grid-cols-2">
               {competitorPains.map((p, i) => (
-                <div key={i} className="rounded-xl border-l-2 border-danger/40 bg-card px-5 py-4">
+                <div key={i} className="nb-card border-l-4 !border-l-danger">
                   <p className="mb-2 text-sm italic text-foreground">&laquo;{p.quote}&raquo;</p>
-                  <p className="text-xs text-muted">— {p.source}</p>
+                  <p className="text-xs font-medium text-muted">— {p.source}</p>
                 </div>
               ))}
             </div>

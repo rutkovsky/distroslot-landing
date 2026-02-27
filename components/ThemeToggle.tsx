@@ -28,7 +28,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted transition-colors hover:bg-card-hover hover:text-foreground"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border-2 border-border bg-card text-foreground transition-[transform,box-shadow] nb-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
       aria-label={dark ? "Светлая тема" : "Тёмная тема"}
     >
       {dark ? <Sun size={16} /> : <Moon size={16} />}
