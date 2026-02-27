@@ -1,23 +1,31 @@
-export default function DashboardMockup() {
-  const rows = [
-    { sku: "ART-1042", name: "Футболка оверсайз M", msk: 120, spb: 45, kzn: 30, krd: 25, total: 220 },
-    { sku: "ART-1043", name: "Футболка оверсайз L", msk: 95, spb: 38, kzn: 25, krd: 20, total: 178 },
-    { sku: "ART-2081", name: "Худи базовое S", msk: 80, spb: 32, kzn: 18, krd: 15, total: 145 },
-    { sku: "ART-2082", name: "Худи базовое M", msk: 150, spb: 55, kzn: 40, krd: 35, total: 280 },
-    { sku: "ART-3015", name: "Джинсы slim 32", msk: 60, spb: 22, kzn: 15, krd: 12, total: 109 },
-    { sku: "ART-3016", name: "Джинсы slim 34", msk: 45, spb: 18, kzn: 12, krd: 10, total: 85 },
-  ];
+"use client";
 
-  const maxTotal = Math.max(...rows.map((r) => r.total));
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+
+const rows = [
+  { sku: "ART-1042", name: "Футболка оверсайз M", khorugvino: 120, shushary: 45, kazan: 30, krasnodar: 25, total: 220 },
+  { sku: "ART-1043", name: "Футболка оверсайз L", khorugvino: 95, shushary: 38, kazan: 25, krasnodar: 20, total: 178 },
+  { sku: "ART-2081", name: "Худи базовое S", khorugvino: 80, shushary: 32, kazan: 18, krasnodar: 15, total: 145 },
+  { sku: "ART-2082", name: "Худи базовое M", khorugvino: 150, shushary: 55, kazan: 40, krasnodar: 35, total: 280 },
+  { sku: "ART-3015", name: "Джинсы slim 32", khorugvino: 60, shushary: 22, kazan: 15, krasnodar: 12, total: 109 },
+  { sku: "ART-3016", name: "Джинсы slim 34", khorugvino: 45, shushary: 18, kazan: 12, krasnodar: 10, total: 85 },
+];
+
+const maxTotal = Math.max(...rows.map((r) => r.total));
+
+export default function DashboardMockup() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-card shadow-2xl shadow-primary/5">
+    <div ref={ref} className="overflow-hidden rounded-xl border border-border bg-card shadow-2xl shadow-primary/5">
       {/* Title bar */}
       <div className="flex items-center gap-2 border-b border-border px-4 py-3">
         <div className="h-3 w-3 rounded-full bg-danger/60" />
         <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
         <div className="h-3 w-3 rounded-full bg-success/60" />
-        <span className="ml-3 text-xs text-muted">DistroSlot — Расчёт распределения</span>
+        <span className="ml-3 text-xs text-muted">Klastr — Расчёт распределения</span>
       </div>
 
       {/* Toolbar */}
@@ -35,8 +43,8 @@ export default function DashboardMockup() {
             <tr className="border-b border-border text-muted">
               <th className="px-4 py-2.5 font-medium">SKU</th>
               <th className="px-4 py-2.5 font-medium">Товар</th>
-              <th className="px-4 py-2.5 font-medium text-right">Москва</th>
-              <th className="px-4 py-2.5 font-medium text-right">СПб</th>
+              <th className="px-4 py-2.5 font-medium text-right">Хоругвино</th>
+              <th className="px-4 py-2.5 font-medium text-right">Шушары</th>
               <th className="px-4 py-2.5 font-medium text-right">Казань</th>
               <th className="px-4 py-2.5 font-medium text-right">Краснодар</th>
               <th className="px-4 py-2.5 font-medium text-right">Итого</th>
@@ -44,24 +52,32 @@ export default function DashboardMockup() {
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => (
-              <tr key={row.sku} className="border-b border-border/50 transition-colors hover:bg-card-hover/50">
+            {rows.map((row, idx) => (
+              <motion.tr
+                key={row.sku}
+                initial={{ opacity: 0, x: -10 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                transition={{ delay: idx * 0.1, duration: 0.3 }}
+                className="border-b border-border/50 transition-colors hover:bg-card-hover/50"
+              >
                 <td className="px-4 py-2.5 font-mono text-muted">{row.sku}</td>
                 <td className="px-4 py-2.5 text-foreground">{row.name}</td>
-                <td className="px-4 py-2.5 text-right text-foreground">{row.msk}</td>
-                <td className="px-4 py-2.5 text-right text-foreground">{row.spb}</td>
-                <td className="px-4 py-2.5 text-right text-foreground">{row.kzn}</td>
-                <td className="px-4 py-2.5 text-right text-foreground">{row.krd}</td>
+                <td className="px-4 py-2.5 text-right text-foreground">{row.khorugvino}</td>
+                <td className="px-4 py-2.5 text-right text-foreground">{row.shushary}</td>
+                <td className="px-4 py-2.5 text-right text-foreground">{row.kazan}</td>
+                <td className="px-4 py-2.5 text-right text-foreground">{row.krasnodar}</td>
                 <td className="px-4 py-2.5 text-right font-medium text-primary">{row.total}</td>
                 <td className="px-4 py-2.5">
                   <div className="h-1.5 w-full overflow-hidden rounded-full bg-border">
-                    <div
+                    <motion.div
                       className="h-full rounded-full bg-gradient-to-r from-primary to-secondary"
-                      style={{ width: `${(row.total / maxTotal) * 100}%` }}
+                      initial={{ width: 0 }}
+                      animate={isInView ? { width: `${(row.total / maxTotal) * 100}%` } : { width: 0 }}
+                      transition={{ delay: idx * 0.1 + 0.3, duration: 0.6, ease: "easeOut" }}
                     />
                   </div>
                 </td>
-              </tr>
+              </motion.tr>
             ))}
           </tbody>
         </table>

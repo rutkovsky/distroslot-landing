@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Send } from "lucide-react";
+import Logo from "./ui/Logo";
+import ThemeToggle from "./ThemeToggle";
+
+const TG_BOT_URL = "https://t.me/distroslot_bot";
 
 const navLinks = [
   { label: "Возможности", href: "#features" },
@@ -16,10 +20,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <a href="#" className="text-xl font-bold tracking-tight">
-          <span className="text-primary">Distro</span>
-          <span className="text-foreground">Slot</span>
-        </a>
+        <Logo />
 
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
@@ -33,20 +34,29 @@ export default function Header() {
           ))}
         </nav>
 
-        <a
-          href="#pricing"
-          className="hidden rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover md:inline-block"
-        >
-          Попробовать бесплатно
-        </a>
+        <div className="hidden items-center gap-3 md:flex">
+          <ThemeToggle />
+          <a
+            href={TG_BOT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover"
+          >
+            <Send size={14} />
+            Попробовать бесплатно
+          </a>
+        </div>
 
-        <button
-          className="text-muted md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <ThemeToggle />
+          <button
+            className="text-muted"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Меню"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {mobileOpen && (
@@ -62,10 +72,13 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="#pricing"
-            className="mt-2 block rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-primary-hover"
+            href={TG_BOT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover"
             onClick={() => setMobileOpen(false)}
           >
+            <Send size={14} />
             Попробовать бесплатно
           </a>
         </div>

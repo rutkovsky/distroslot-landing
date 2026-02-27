@@ -1,4 +1,7 @@
-import { Send, Mail } from "lucide-react";
+import { Send, Mail, Shield } from "lucide-react";
+import Logo from "./ui/Logo";
+
+const TG_BOT_URL = "https://t.me/distroslot_bot";
 
 export default function Footer() {
   return (
@@ -7,29 +10,34 @@ export default function Footer() {
         <div className="grid gap-8 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-2">
-            <a href="#" className="mb-4 inline-block text-xl font-bold">
-              <span className="text-primary">Distro</span>
-              <span className="text-foreground">Slot</span>
-            </a>
+            <div className="mb-4">
+              <Logo />
+            </div>
             <p className="mb-4 max-w-sm text-sm text-muted">
               Калькулятор распределения товаров для Ozon.
               Автоматический расчёт поставок по 26 кластерам.
             </p>
-            <div className="flex items-center gap-4">
+            <div className="mb-4 flex items-center gap-4">
               <a
-                href="#"
+                href={TG_BOT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-primary"
               >
                 <Send size={16} />
                 Telegram
               </a>
               <a
-                href="#"
+                href="mailto:support@klastr.ru"
                 className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-primary"
               >
                 <Mail size={16} />
-                support@distroslot.ru
+                support@klastr.ru
               </a>
+            </div>
+            <div className="flex items-center gap-2 text-xs text-muted/70">
+              <Shield size={14} />
+              <span>Данные на серверах в РФ · Read-only API · ИП Павлов Валерий</span>
             </div>
           </div>
 
@@ -59,26 +67,24 @@ export default function Footer() {
             <h4 className="mb-4 text-sm font-semibold text-foreground">Ресурсы</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-sm text-muted transition-colors hover:text-foreground">
+                <a
+                  href="https://docs.ozon.ru/api/seller/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted transition-colors hover:text-foreground"
+                >
                   Документация Ozon API
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted transition-colors hover:text-foreground">
-                  Блог
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-muted transition-colors hover:text-foreground">
-                  Политика конфиденциальности
-                </a>
+                <span className="text-sm text-muted/50">Блог — скоро</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 border-t border-border pt-6 text-center text-xs text-muted">
-          &copy; {new Date().getFullYear()} DistroSlot. Все права защищены.
+          &copy; {new Date().getFullYear()} Klastr. Все права защищены.
         </div>
       </div>
     </footer>
