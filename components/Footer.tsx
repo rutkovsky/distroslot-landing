@@ -39,6 +39,9 @@ export default function Footer() {
               <Shield size={14} />
               <span>Данные на серверах в РФ · Read-only API</span>
             </div>
+            <div className="text-xs text-muted">
+              ИП Павлов Валерий ИНН 12345678
+            </div>
           </div>
 
           {/* Links */}
