@@ -75,8 +75,6 @@ export default function HeroSection() {
             <span>Данные в РФ</span>
             <span className="hidden sm:inline">·</span>
             <span>Read-only API</span>
-            <span className="hidden sm:inline">·</span>
-            <span>ИП Павлов Валерий</span>
           </div>
         </FadeIn>
       </div>
