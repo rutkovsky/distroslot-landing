@@ -37,7 +37,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-2 text-xs text-muted">
               <Shield size={14} />
-              <span>Данные на серверах в РФ · Read-only API · ИП Павлов Валерий</span>
+              <span>Данные на серверах в РФ · Read-only API</span>
             </div>
           </div>
 
